@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="20" fill="#2C1E1B" />
+  <g transform="translate(80,60)" fill="#3A2926">
+    <rect width="240" height="180" rx="12" />
+  </g>
+  <g transform="translate(140,110)" fill="#FF7622">
+    <circle cx="40" cy="40" r="20" />
+  </g>
+  <text x="200" y="260" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#A0938C">Image unavailable</text>
+</svg>

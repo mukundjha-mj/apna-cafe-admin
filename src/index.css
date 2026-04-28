@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF7622;
+  --color-primary-dark: #E65C00;
+  --color-bg-dark: #120A08;
+  --color-bg-card: #1C120F;
+  --color-bg-accent: #261A16;
+  --color-text-cream: #F8F1E9;
+  --color-text-muted: #A0938C;
+  
+  --radius-custom: 12px;
+  
+  --shadow-custom: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-bg-dark text-text-cream min-h-screen antialiased overflow-x-hidden;
+    background:
+      radial-gradient(circle at top, rgba(255, 118, 34, 0.08), transparent 34%),
+      radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.03), transparent 28%),
+      #120a08;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .card-premium {
+    @apply bg-bg-card border border-white/5 rounded-custom p-6 shadow-custom;
+  }
+  
+  .btn-premium {
+    @apply px-5 py-2.5 rounded-custom font-semibold transition-all active:scale-95 inline-flex items-center gap-2;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+
+  .animate-soft-fade-up {
+    @apply animate-[soft-fade-up_0.7s_ease-out_both];
+  }
+
+  .animate-fade {
+    @apply animate-[fade_0.3s_ease-out_both];
+  }
+
+  .skeleton-loading {
+    @apply relative overflow-hidden bg-white/5 rounded-2xl;
+  }
+
+  .skeleton-loading::after {
+    @apply absolute inset-0 content-[''];
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes soft-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
