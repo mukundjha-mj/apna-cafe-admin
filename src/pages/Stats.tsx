@@ -11,7 +11,7 @@ import {
   Pie,
   Cell
 } from 'recharts';
-import { TrendingUp, Users, ShoppingBag, IndianRupee, Loader2 } from 'lucide-react';
+import { TrendingUp, Users, ShoppingBag, IndianRupee } from 'lucide-react';
 import { getDashboardStats, getSalesChartData, getCafes } from '../lib/api';
 
 const COLORS = ['#FF7622', '#F59E0B', '#22C55E', '#3b82f6', '#8b5cf6'];

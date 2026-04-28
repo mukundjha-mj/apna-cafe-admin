@@ -7,7 +7,6 @@ import {
   Filter,
   Edit3,
   Leaf,
-  Loader2,
   ChevronDown
 } from 'lucide-react';
 import EditItemModal from '../components/EditItemModal';

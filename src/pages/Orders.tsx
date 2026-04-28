@@ -9,9 +9,6 @@ import {
   XCircle,
   ChevronRight,
   Maximize2,
-  Utensils,
-  MapPin,
-  Loader2,
   Inbox
 } from 'lucide-react';
 import OrderDetailsModal from '../components/OrderDetailsModal';

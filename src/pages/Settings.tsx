@@ -9,8 +9,7 @@ import {
   Loader2,
   CheckCircle,
   AlertCircle,
-  Power,
-  ChevronRight
+  Power
 } from 'lucide-react';
 
 export default function Settings() {

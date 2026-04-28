@@ -1,4 +1,4 @@
-import { X, User, Phone, MapPin, CreditCard, ShoppingBag, Clock, Utensils, IndianRupee, ArrowRight } from 'lucide-react';
+import { X, User, Phone, MapPin, CreditCard, ShoppingBag, Utensils, IndianRupee, ArrowRight } from 'lucide-react';
 
 interface OrderDetailsModalProps {
   order: any;

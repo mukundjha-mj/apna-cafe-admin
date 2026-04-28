@@ -1,6 +1,6 @@
 // React import not required with new JSX runtime
 import { useEffect, useState } from 'react';
-import { X, Plus, Trash2 } from 'lucide-react';
+import { X, Plus, ChevronDown, Loader2 } from 'lucide-react';
 import api, { uploadMenuImage } from '../lib/api';
 
 type Props = {
