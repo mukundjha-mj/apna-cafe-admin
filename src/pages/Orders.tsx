@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
-import { getOrders, updateOrderStatus, getCafes } from '../lib/api';
+import { getOrders, updateOrderStatus, getCafes, API_URL } from '../lib/api';
 import { 
   Clock, 
   CheckCircle, 
@@ -13,7 +13,6 @@ import {
 } from 'lucide-react';
 import OrderDetailsModal from '../components/OrderDetailsModal';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const statusConfig: Record<string, { label: string; color: string; bg: string; icon: any; next: string | null; nextLabel: string }> = {
   PENDING: { label: 'Pending', color: 'text-orange-500/80', bg: 'bg-orange-500/5', icon: Clock, next: 'ACCEPTED', nextLabel: 'Accept Order' },

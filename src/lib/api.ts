@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+export const API_URL = import.meta.env.VITE_API_URL || '';
 
 const api = axios.create({
   baseURL: `${API_URL}/api`,
@@ -53,6 +53,11 @@ export const uploadMenuImage = async (file: File) => {
     },
   });
   return response.data.url;
+};
+
+export const verifyAdmin = async (userId: string) => {
+  const response = await api.post('/auth/admin/verify', { userId });
+  return response.data;
 };
 
 export default api;

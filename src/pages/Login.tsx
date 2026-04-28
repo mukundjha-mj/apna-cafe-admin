@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { login } from '../lib/auth';
+import { login, logout } from '../lib/auth';
 import { ArrowRight, Coffee, Lock, Mail, Loader2 } from 'lucide-react';
+import { verifyAdmin } from '../lib/api';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -14,11 +15,19 @@ export default function Login() {
     setError('');
     
     try {
-      // Owner login logic
-      if (email !== 'owner@apna-cafe.com') {
-        throw new Error('Access denied. Only owner can login here.');
+      // 1. Supabase Auth Login
+      const authData = await login(email, password);
+      
+      if (authData.user) {
+        // 2. Backend Role Verification
+        try {
+          await verifyAdmin(authData.user.id);
+        } catch (verifyErr: any) {
+          // If not an admin, log them out immediately
+          await logout();
+          throw new Error(verifyErr.response?.data?.error || 'Access denied. Only owner can login here.');
+        }
       }
-      await login(email, password);
     } catch (err: any) {
       setError(err.message || 'Login failed');
     } finally {
@@ -53,7 +62,7 @@ export default function Login() {
                   <input
                     type="email"
                     required
-                    placeholder="owner@apna-cafe.com"
+                    placeholder="Enter owner email"
                     className="w-full rounded-[16px] border border-white/5 bg-bg-accent/90 py-3.5 pl-12 pr-4 text-text-cream outline-none transition-all placeholder:text-text-muted/70 focus:border-primary/50 focus:ring-4 focus:ring-primary/10 sm:py-4"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

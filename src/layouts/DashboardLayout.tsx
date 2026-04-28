@@ -18,7 +18,7 @@ import {
   Clock,
   ExternalLink
 } from 'lucide-react';
-import { getCafes, getOrders, updateOrderStatus } from '../lib/api';
+import { getCafes, getOrders, updateOrderStatus, API_URL } from '../lib/api';
 
 const SidebarLink = ({ to, icon: Icon, label, collapsed, onClick }: any) => (
   <NavLink 
@@ -38,7 +38,7 @@ const SidebarLink = ({ to, icon: Icon, label, collapsed, onClick }: any) => (
   </NavLink>
 );
 
-const NOTIFICATION_SOUND = 'https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3';
+const NOTIFICATION_SOUND = import.meta.env.VITE_NOTIFICATION_SOUND || 'https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3';
 
 export default function DashboardLayout() {
   const [collapsed, setCollapsed] = useState(false);
@@ -98,7 +98,6 @@ export default function DashboardLayout() {
   useEffect(() => {
     if (!cafe) return;
 
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     const socket = io(API_URL);
 
     socket.on('connect', () => {
